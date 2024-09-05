@@ -4,9 +4,9 @@ import App from './App.jsx'
 
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import LoginForm from './components/Login.jsx'
 import Privacy from './pages/Privacy.jsx'
 import Home from './components/Home.jsx'
+import Login from './components/Login.jsx'
 
 const routes=createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const routes=createBrowserRouter([
       },
       {
         path:'/login',
-        element:<LoginForm/>
+        element:<Login/>
       },
       {
         path:'/privacy',
