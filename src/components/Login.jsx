@@ -10,7 +10,6 @@ function Login() {
     const accessToken = localStorage.getItem("accesstoken");
 
     if (accessToken) {
-      console.log(accessToken);
       navigate("/home"); // Navigate to the home route if the token exists
     }
   }, [navigate]);
