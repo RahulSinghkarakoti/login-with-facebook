@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import FacebookLoginButton from "./FacebookLoginButton";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeUser } from "../store/slice";
 
 const Home = () => {
   const [userData, setUserData] = useState(null);
   const [posts,setPosts]=useState(null)
   const [loading,setLoading]=useState(false)
   const [error, setError] = useState(null);
-
+  
   const navigate = useNavigate();
-
+  const dispatch=useDispatch();
+  const accessToken = useSelector((state) => state.user.accessToken)
+  
   useEffect(() => {
     setLoading(true)
     const fetchUserData = async () => {
-      const accessToken = localStorage.getItem("accesstoken");
+      // const accessToken = localStorage.getItem("accesstoken");
 
       if (!accessToken) {
         setError("No access token found.");
@@ -44,7 +48,7 @@ const Home = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("accesstoken");
+    dispatch(removeUser())
     setUserData(null);
     navigate("/");
   };

@@ -1,17 +1,22 @@
 import React, { useEffect } from "react";
 import FacebookLoginButton from "./FacebookLoginButton";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../store/slice";
 
 
 function Login() {
   const navigate = useNavigate();
+const dispatch=useDispatch()
 
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accesstoken");
+useEffect(() => {
+  // const accessToken = "accesstoken";
+  const accessToken = localStorage.getItem("accesstoken");
+  dispatch(setUser({ accessToken }));
 
-    if (accessToken) {
-      navigate("/home"); // Navigate to the home route if the token exists
-    }
+    // if (accessToken) {
+    //   navigate("/home"); // Navigate to the home route if the token exists
+    // }
   }, [navigate]);
 
   return (
