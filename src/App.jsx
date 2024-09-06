@@ -1,15 +1,9 @@
-import { Link, Outlet } from "react-router-dom";
-import LoginForm from "./components/Login";
-import Header from "./components/Header";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div>
-        <Header/>
-        
-         <main>
-        <Outlet />
-         </main>
+     <Home/>
     </div>
   );
 }
